@@ -3,6 +3,11 @@ miso-aeson
 
 Library to convert between `Data.Aeson (Value)` and `Miso.JSON (Value)`
 
+```haskell
+aesonToJSON :: Aeson.Value -> JSON.Value
+jsonToAeson :: JSON.Value -> Aeson.Value
+```
+
 ### Development
 
 Call `nix develop` to enter a shell with [GHC 9.12.2](https://haskell.org/ghc)
