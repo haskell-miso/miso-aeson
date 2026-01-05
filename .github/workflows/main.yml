@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: main
+    branches: master
   pull_request:
 permissions:
   contents: read
@@ -33,19 +33,3 @@ jobs:
 
       - name: Build JS using Nix
         run: nix develop .#ghcjs --command bash -c "make js"
-
-  deploy:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    needs: build
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v
-
