@@ -19,12 +19,12 @@ import           Data.Bifunctor (first)
 -----------------------------------------------------------------------------
 newtype MisoAeson a = MisoAeson { unMisoAeson :: a }
 -----------------------------------------------------------------------------
-instance Aeson.ToJSON a => Miso.JSON.ToJSON (MisoAeson a) where
+instance Aeson.ToJSON a => JSON.ToJSON (MisoAeson a) where
     toJSON = aesonToJSON . Aeson.toJSON . unMisoAeson
 -----------------------------------------------------------------------------            
-instance Aeson.FromJSON a => Miso.JSON.FromJSON (MisoAeson a) where
+instance Aeson.FromJSON a => JSON.FromJSON (MisoAeson a) where
     parseJSON = fmap MisoAeson
-            . Miso.JSON.Parser
+            . JSON.Parser
             . first ms
             . flip Aeson.parseEither ()
             . const
