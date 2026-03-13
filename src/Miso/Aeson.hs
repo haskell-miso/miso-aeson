@@ -3,17 +3,33 @@
 {-# LANGUAGE LambdaCase        #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
-module Miso.Aeson (aesonToJSON, jsonToAeson) where
+module Miso.Aeson (aesonToJSON, jsonToAeson, MisoAeson(..)) where
 -----------------------------------------------------------------------------
-import           Miso.String (toMisoString, fromMisoString)
+import           Miso.String (toMisoString, fromMisoString, ms)
 import qualified Miso.JSON as JSON
 -----------------------------------------------------------------------------
 import qualified Data.Aeson as Aeson
+import qualified Data.Aeson.Types as Aeson
 import qualified Data.Vector as V
 import           Data.Scientific
 import qualified Data.Aeson.KeyMap as KM
 import           Data.Aeson.Key (toText, fromText)
 import qualified Data.Map.Strict as M
+import           Data.Bifunctor (first)
+-----------------------------------------------------------------------------
+newtype MisoAeson a = MisoAeson { unMisoAeson :: a }
+-----------------------------------------------------------------------------
+instance Aeson.ToJSON a => JSON.ToJSON (MisoAeson a) where
+    toJSON = aesonToJSON . Aeson.toJSON . unMisoAeson
+-----------------------------------------------------------------------------            
+instance Aeson.FromJSON a => JSON.FromJSON (MisoAeson a) where
+    parseJSON = fmap MisoAeson
+            . JSON.Parser
+            . first ms
+            . flip Aeson.parseEither ()
+            . const
+            . Aeson.parseJSON
+            . jsonToAeson
 -----------------------------------------------------------------------------
 aesonToJSON :: Aeson.Value -> JSON.Value
 aesonToJSON = \case
