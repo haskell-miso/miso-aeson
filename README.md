@@ -8,6 +8,20 @@ aesonToJSON :: Aeson.Value -> JSON.Value
 jsonToAeson :: JSON.Value -> Aeson.Value
 ```
 
+### `DerivingVia`
+
+You can derive `To/FromJSON` instances using the `MisoAeson` data type.
+
+```haskell
+data D = D
+  { a :: Char
+  , b :: Double
+  }
+  deriving stock (Generic)
+  deriving (Data.Aeson.FromJSON, Data.Aeson.ToJSON) via Generically D
+  deriving (Miso.JSON.FromJSON, Miso.JSON.ToJSON) via MisoAeson D
+```
+
 ### Development
 
 Call `nix develop` to enter a shell with [GHC 9.12.2](https://haskell.org/ghc)
