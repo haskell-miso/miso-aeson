@@ -3,7 +3,7 @@
 {-# LANGUAGE LambdaCase        #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
-module Miso.Aeson (aesonToJSON, jsonToAeson, MisoAeson) where
+module Miso.Aeson (aesonToJSON, jsonToAeson, MisoAeson(MisoAeson)) where
 -----------------------------------------------------------------------------
 import           Miso.String (toMisoString, fromMisoString, ms)
 import qualified Miso.JSON as JSON
