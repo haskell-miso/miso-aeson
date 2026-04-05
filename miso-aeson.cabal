@@ -7,7 +7,7 @@ license:            BSD-3-Clause
 license-file:       LICENSE
 author:             dmjio
 maintainer:         code@dmj.io
-copyright:          haskell-miso @ 2025
+copyright:          haskell-miso @ 2026
 category:           Web
 build-type:         Simple
 extra-doc-files:    CHANGELOG.md
@@ -20,7 +20,7 @@ flag interactive
 
 common warnings
   ghc-options:
-    -funbox-strict-fields -O2 -ferror-spans -fspecialise-aggressively -Wall
+    -funbox-strict-fields -ferror-spans -fspecialise-aggressively -Wall
 
 common options
   if arch(wasm32)
@@ -34,13 +34,17 @@ common options
      ld-options:
        -sEXPORTED_RUNTIME_METHODS=HEAP8
 
+source-repository head
+   type: git
+   location: https://github.com/haskell-miso/miso-aeson.git
+
 library
   import:
     options, warnings
   exposed-modules:
     Miso.Aeson
-  build-depends: 
-    base < 5, containers >= 0.7, miso >= 1.9, aeson, unordered-containers, vector, scientific
+  build-depends:
+    base < 5, containers < 0.9, miso >= 1.9 && < 1.10, aeson < 2.3, unordered-containers < 0.3, vector < 0.14, scientific < 0.4
   hs-source-dirs:
     src
   default-language:
