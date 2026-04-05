@@ -1,7 +1,9 @@
-miso-aeson <a href="http://hackage.haskell.org/package/miso-aeson">
+miso-aeson
+====================
+
+<a href="http://hackage.haskell.org/package/miso-aeson">
   <img src="https://img.shields.io/hackage/v/miso-aeson.svg?style=for-the-badge" alt="Hackage">
 </a> 
-====================
 
 Library to convert between `Data.Aeson (Value)` and `Miso.JSON (Value)`
 
