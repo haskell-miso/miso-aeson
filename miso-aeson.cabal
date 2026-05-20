@@ -44,7 +44,7 @@ library
   exposed-modules:
     Miso.Aeson
   build-depends:
-    base < 5, containers < 0.9, miso >= 1.9 && < 1.10, aeson < 2.3, unordered-containers < 0.3, vector < 0.14, scientific < 0.4
+    base < 5, containers < 0.9, miso >= 1.9 && < 2.0, aeson < 2.3, unordered-containers < 0.3, vector < 0.14, scientific < 0.4
   hs-source-dirs:
     src
   default-language:
