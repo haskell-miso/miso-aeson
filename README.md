@@ -1,7 +1,10 @@
 miso-aeson
 ====================
 
-As of `miso-1.13` there is now an `-faeson` flag.
+> [!TIP]
+> As of `miso-1.13` there is now an `-faeson` flag.
+
+<hr />
 
 <a href="http://hackage.haskell.org/package/miso-aeson">
   <img src="https://img.shields.io/hackage/v/miso-aeson.svg?style=for-the-badge" alt="Hackage">
