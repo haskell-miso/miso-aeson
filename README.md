@@ -2,7 +2,7 @@ miso-aeson
 ====================
 
 > [!TIP]
-> As of `miso-1.13` there is now an `-faeson` flag.
+> As of `miso-1.13` there is now an `-faeson` flag. This package is largely unnecessary now.
 
 <hr />
 
